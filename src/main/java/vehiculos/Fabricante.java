@@ -32,3 +32,4 @@ class Fabricante {
     public void incrementarVentas() {
         this.ventas++;
     }
+}
