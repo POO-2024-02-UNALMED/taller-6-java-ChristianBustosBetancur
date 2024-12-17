@@ -40,6 +40,9 @@ public class Vehiculo {
     public static int getCantidadVehiculos() {
         return cantidadVehiculos;
     }
+    public static List<Vehiculo> getVehiculosCreados() {
+        return vehiculosCreados;
+    }
 
     public static void setCantidadVehiculos(int cantidad) {
         cantidadVehiculos = cantidad;
@@ -54,16 +57,9 @@ public class Vehiculo {
     public static Pais paisMasVendedor() {
         Pais paisMasVendedor = null;
         int maxVentas = 0;
-        List<Pais> listaPaises = new ArrayList<>();
 
-        for (Vehiculo v : vehiculosCreados) {
-            Pais paisActual = v.fabricante.getPais();
-            if (!listaPaises.contains(paisActual)) {
-                listaPaises.add(paisActual);
-            }
-        }
-
-        for (Pais pais : listaPaises) {
+        for (Vehiculo v : Vehiculo.getVehiculosCreados()) {
+            Pais pais = v.getFabricante().getPais();
             if (pais.getVentas() > maxVentas) {
                 maxVentas = pais.getVentas();
                 paisMasVendedor = pais;
@@ -71,27 +67,20 @@ public class Vehiculo {
         }
         return paisMasVendedor;
     }
-
+    
     public static Fabricante fabricaMayorVentas() {
         Fabricante fabricaMayorVentas = null;
         int maxVentas = 0;
-        List<Fabricante> listaFabricantes = new ArrayList<>();
 
-        for (Vehiculo v : vehiculosCreados) {
-            Fabricante fabricanteActual = v.fabricante;
-            if (!listaFabricantes.contains(fabricanteActual)) {
-                listaFabricantes.add(fabricanteActual);
-            }
-        }
-
-        for (Fabricante fabricante : listaFabricantes) {
+        for (Vehiculo v : Vehiculo.getVehiculosCreados()) {
+            Fabricante fabricante = v.getFabricante();
             if (fabricante.getVentas() > maxVentas) {
                 maxVentas = fabricante.getVentas();
                 fabricaMayorVentas = fabricante;
             }
         }
         return fabricaMayorVentas;
-    }
+    }   
 
     public String getPlaca() { 
         return placa; 
