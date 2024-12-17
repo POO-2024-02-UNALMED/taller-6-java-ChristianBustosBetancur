@@ -29,17 +29,20 @@ public class Vehiculo {
         this.peso = peso;
         this.traccion = traccion;
         this.fabricante = fabricante;
-        
+
         cantidadVehiculos++;
-        
         vehiculosCreados.add(this);
-        
+
         fabricante.incrementarVentas();
         fabricante.getPais().incrementarVentas();
     }
 
     public static int getCantidadVehiculos() {
         return cantidadVehiculos;
+    }
+
+    public static void setCantidadVehiculos(int cantidad) {
+        cantidadVehiculos = cantidad;
     }
 
     public static String vehiculosPorTipo() {
@@ -51,9 +54,16 @@ public class Vehiculo {
     public static Pais paisMasVendedor() {
         Pais paisMasVendedor = null;
         int maxVentas = 0;
+        List<Pais> listaPaises = new ArrayList<>();
 
         for (Vehiculo v : vehiculosCreados) {
-            Pais pais = v.fabricante.getPais();
+            Pais paisActual = v.fabricante.getPais();
+            if (!listaPaises.contains(paisActual)) {
+                listaPaises.add(paisActual);
+            }
+        }
+
+        for (Pais pais : listaPaises) {
             if (pais.getVentas() > maxVentas) {
                 maxVentas = pais.getVentas();
                 paisMasVendedor = pais;
@@ -65,9 +75,16 @@ public class Vehiculo {
     public static Fabricante fabricaMayorVentas() {
         Fabricante fabricaMayorVentas = null;
         int maxVentas = 0;
+        List<Fabricante> listaFabricantes = new ArrayList<>();
 
         for (Vehiculo v : vehiculosCreados) {
-            Fabricante fabricante = v.fabricante;
+            Fabricante fabricanteActual = v.fabricante;
+            if (!listaFabricantes.contains(fabricanteActual)) {
+                listaFabricantes.add(fabricanteActual);
+            }
+        }
+
+        for (Fabricante fabricante : listaFabricantes) {
             if (fabricante.getVentas() > maxVentas) {
                 maxVentas = fabricante.getVentas();
                 fabricaMayorVentas = fabricante;
@@ -76,60 +93,67 @@ public class Vehiculo {
         return fabricaMayorVentas;
     }
 
- 
     public String getPlaca() { 
-    	return placa; 
-    	}
+        return placa; 
+    }
+
     public void setPlaca(String placa) { 
-    	this.placa = placa; 
-    	}
-    
+        this.placa = placa; 
+    }
+
     public int getPuertas() { 
-    	return puertas; 
-    	}
+        return puertas; 
+    }
+
     public void setPuertas(int puertas) { 
-    	this.puertas = puertas; 
-    	}
-    
+        this.puertas = puertas; 
+    }
+
     public int getVelocidadMaxima() { 
-    	return velocidadMaxima; 
-    	}
+        return velocidadMaxima; 
+    }
+
     public void setVelocidadMaxima(int velocidadMaxima) { 
-    	this.velocidadMaxima = velocidadMaxima; 
-    	}
-    
+        this.velocidadMaxima = velocidadMaxima; 
+    }
+
     public String getNombre() { 
-    	return nombre; 
-    	}
+        return nombre; 
+    }
+
     public void setNombre(String nombre) { 
-    	this.nombre = nombre; 
-    	}
-    
+        this.nombre = nombre; 
+    }
+
     public double getPrecio() { 
-    	return precio; 
-    	}
+        return precio; 
+    }
+
     public void setPrecio(double precio) { 
-    	this.precio = precio; 
-    	}
-    
+        this.precio = precio; 
+    }
+
     public double getPeso() { 
-    	return peso; 
-    	}
+        return peso; 
+    }
+
     public void setPeso(double peso) { 
-    	this.peso = peso; 
-    	}
-    
+        this.peso = peso; 
+    }
+
     public String getTraccion() { 
-    	return traccion; 
-    	}
+        return traccion; 
+    }
+
     public void setTraccion(String traccion) { 
-    	this.traccion = traccion; 
-    	}
-    
+        this.traccion = traccion; 
+    }
+
     public Fabricante getFabricante() { 
-    	return fabricante; 
-    	}
+        return fabricante; 
+    }
+
     public void setFabricante(Fabricante fabricante) { 
-    	this.fabricante = fabricante; 
-    	}
+        this.fabricante = fabricante; 
+    }
 }
