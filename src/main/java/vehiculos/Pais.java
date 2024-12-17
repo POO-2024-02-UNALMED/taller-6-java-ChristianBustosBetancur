@@ -22,5 +22,21 @@ public class Pais {
     public int getVentas() { 
     	return ventas; 
     	}
+
+    public static Pais paisMasVendedor() {
+        Pais paisMasVendedor = null;
+        int maxVentas = 0;
+
+        for (Vehiculo v : Vehiculo.getVehiculosCreados()) {
+            Pais pais = v.getFabricante().getPais();
+            if (pais.getVentas() > maxVentas) {
+                maxVentas = pais.getVentas();
+                paisMasVendedor = pais;
+            }
+        }
+        return paisMasVendedor;
+    }
+
+     
     
 }

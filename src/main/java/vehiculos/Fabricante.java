@@ -32,4 +32,19 @@ public class Fabricante {
     public void incrementarVentas() {
         this.ventas++;
     }
+
+    public static Fabricante fabricaMayorVentas() {
+        Fabricante fabricaMayorVentas = null;
+        int maxVentas = 0;
+
+        for (Vehiculo v : Vehiculo.getVehiculosCreados()) {
+            Fabricante fabricante = v.getFabricante();
+            if (fabricante.getVentas() > maxVentas) {
+                maxVentas = fabricante.getVentas();
+                fabricaMayorVentas = fabricante;
+            }
+        }
+        return fabricaMayorVentas;
+    } 
+    
 }

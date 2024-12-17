@@ -54,34 +54,6 @@ public class Vehiculo {
                "Camiones: " + cantidadCamiones;
     }
 
-    public static Pais paisMasVendedor() {
-        Pais paisMasVendedor = null;
-        int maxVentas = 0;
-
-        for (Vehiculo v : Vehiculo.getVehiculosCreados()) {
-            Pais pais = v.getFabricante().getPais();
-            if (pais.getVentas() > maxVentas) {
-                maxVentas = pais.getVentas();
-                paisMasVendedor = pais;
-            }
-        }
-        return paisMasVendedor;
-    }
-    
-    public static Fabricante fabricaMayorVentas() {
-        Fabricante fabricaMayorVentas = null;
-        int maxVentas = 0;
-
-        for (Vehiculo v : Vehiculo.getVehiculosCreados()) {
-            Fabricante fabricante = v.getFabricante();
-            if (fabricante.getVentas() > maxVentas) {
-                maxVentas = fabricante.getVentas();
-                fabricaMayorVentas = fabricante;
-            }
-        }
-        return fabricaMayorVentas;
-    }   
-
     public String getPlaca() { 
         return placa; 
     }
